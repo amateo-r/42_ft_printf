@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 11:15:36 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/06/03 11:15:38 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/08/09 13:04:30 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/08/09 13:07:49 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+/* ft_itoa function for unsigned int number. */
+char	*ft_uitoa(unsigned int nb)
 {
-	size_t	len;
+	char	*str;
+	int		len;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
+	len = ft_digits(nb);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len--] = '\0';
+	if (nb == 0)
+		str[len] = 0 + '0';
+	while (nb > 0)
+	{
+		str[len--] = nb % 10 + '0';
+		nb /= 10;
+	}
+	return (str);
 }

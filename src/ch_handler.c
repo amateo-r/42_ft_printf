@@ -37,7 +37,7 @@ int	ft_check(void *s)
 int	ch_flag(t_printdata *pd)
 {
 	if (pd->minus > 0)
-		return(1);
+		return (1);
 	else if (pd->zero > 0)
 		return (1);
 	else if (pd->space > 0)

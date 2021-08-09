@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_digits_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 11:15:36 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/06/03 11:15:38 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/08/09 12:47:19 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/08/09 12:47:24 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+/* Count digits of a number with base format. */
+int	ft_digits_base(unsigned long n, int base)
 {
-	size_t	len;
+	int		i;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
+	i = 0;
+	if (n == 0)
+		return (1);
+	while (n > 0)
+	{
+		i++;
+		n /= base;
+	}
+	return (i);
 }

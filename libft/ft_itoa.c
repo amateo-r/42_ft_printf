@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_putnbr_lp (int n, char *str, int pos)
+static int	ft_putnbr_lp(int n, char *str, int pos)
 {
 	if (n > 9)
 	{
@@ -25,24 +25,7 @@ static int	ft_putnbr_lp (int n, char *str, int pos)
 	return (pos);
 }
 
-static int	ft_digits (int n)
-{
-	int	count;
-
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		count = 1;
-	else
-		count = 0;
-	while (n != 0)
-	{
-		n /= 10;
-		count++;
-	}
-	return (count);
-}
-
+/* Convert number into string. */
 char	*ft_itoa(int n)
 {
 	char	*str;

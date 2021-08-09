@@ -347,6 +347,7 @@ int	main(void)
 	// tf_p_conversion();
 	// tf_per_conversion();
 	int d = 42;
-	printf (d, "Hola %d\n");
+	printf ("Hola %p\n", d);
+	ft_printf ("Hola [2%p]\n", d);
 	return (0);
 }

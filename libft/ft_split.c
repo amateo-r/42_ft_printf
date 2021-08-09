@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_count (char const *s, char c)
+static int	ft_count(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -34,7 +34,7 @@ static int	ft_count (char const *s, char c)
 	return (count);
 }
 
-int	ft_cl (const char *s, char c)
+int	ft_cl(const char *s, char c)
 {
 	int	count;
 

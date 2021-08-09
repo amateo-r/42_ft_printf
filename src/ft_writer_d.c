@@ -12,13 +12,14 @@
 
 #include "../include/libftprintf.h"
 
-void	ft_stupid_sign (int sign)
+void	ft_stupid_sign(int sign)
 {
 	if (sign)
 		ft_putchar_fd('-', 1);
 	return ;
 }
-void	ft_write_d (t_printdata *pd)
+
+void	ft_write_d(t_printdata *pd)
 {
 	char	*s;
 	int		d;
@@ -29,14 +30,27 @@ void	ft_write_d (t_printdata *pd)
 	if (!d)
 		return ;
 	if (d < 0)
-		pd->pre -= 1, d *= -1, sign = 1;
+	{
+		pd->pre -= 1;
+		d *= -1;
+		sign = 1;
+	}
 	s = ft_itoa(d);
 	if (pd->zero > 0)
-		ft_stupid_sign(sign), ft_ws_zero (s, pd);
+	{
+		ft_stupid_sign(sign);
+		ft_ws_zero (s, pd);
+	}
 	else if (pd->space)
-		ft_stupid_sign(sign), ft_ws_space(s, pd);
+	{
+		ft_stupid_sign(sign);
+		ft_ws_space(s, pd);
+	}
 	else if (pd->point)
-		ft_stupid_sign(sign), ft_ws_point(s, pd);
+	{
+		ft_stupid_sign(sign);
+		ft_ws_point(s, pd);
+	}
 	else
 	{
 		ft_stupid_sign(sign);

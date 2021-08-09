@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_digits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/03 11:15:36 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/06/03 11:15:38 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/08/09 12:43:05 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/08/09 12:43:10 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+/* Count digits of a number. */
+int	ft_digits(int n)
 {
-	size_t	len;
+	int	count;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		count = 1;
+	else
+		count = 0;
+	while (n != 0)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
 }

@@ -12,24 +12,28 @@
 
 #include "../include/libftprintf.h"
 
-// Impression for flag zero
-void	ft_ws_zero (char *s, t_printdata *pd)
+/* Impression for flag zero */
+void	ft_ws_zero(char *s, t_printdata *pd)
 {
 	int	i;
 	int	s_len;
 
 	i = -1;
 	s_len = ft_strlen(s);
-	// printf ("\n[TEST ws_zero]: Estúpido pd->pre, minus, len: [%d], [%d], [%d]\n", pd->pre, pd->minus, s_len);
 	if (pd->pre > 0)
+	{
 		while (++i < (pd->pre - s_len))
-			pd->ret++, ft_putchar_fd('0', 1);
+		{
+			pd->ret++;
+			ft_putchar_fd('0', 1);
+		}
+	}
 	ft_putstr_fd(s, 1);
 	pd->ret += s_len;
 	return ;
 }
 
-void	ft_ws_space (char *s, t_printdata *pd)
+void	ft_ws_space(char *s, t_printdata *pd)
 {
 	int	i;
 	int	len;
@@ -39,16 +43,21 @@ void	ft_ws_space (char *s, t_printdata *pd)
 	if (pd->minus)
 		ft_putstr_fd(s, 1);
 	if (pd->pre > 0)
+	{
 		while (++i < pd->pre - len)
-			pd->ret++, ft_putchar_fd(' ', 1);
+		{
+			pd->ret++;
+			ft_putchar_fd(' ', 1);
+		}
+	}
 	if (!pd->minus)
 		ft_putstr_fd(s, 1);
 	pd->ret += len;
 	return ;
 }
 
-// Impression for flag point.
-void	ft_ws_point (char *s, t_printdata *pd)
+/* Impression for flag point. */
+void	ft_ws_point(char *s, t_printdata *pd)
 {
 	int		i;
 	int		len;
@@ -56,12 +65,15 @@ void	ft_ws_point (char *s, t_printdata *pd)
 
 	i = -1;
 	len = ft_strlen(s);
-	// printf ("\n[CH]: %d, [%d]\n", len, pd->pre);
 	if (pd->pre > 0)
 	{
 		if (pd->pre > len && !pd->minus)
-			pd->ret +=len, ft_putstr_fd(s, 1);
+		{
+			pd->ret += len;
+			ft_putstr_fd(s, 1);
+		}
 		else
+		{
 			while (++i < pd->pre)
 			{
 				if (pd->minus)
@@ -71,12 +83,13 @@ void	ft_ws_point (char *s, t_printdata *pd)
 				ft_putchar_fd(c, 1);
 				pd->ret++;
 			}
+		}
 	}
 	return ;
 }
 
-// Write a string.
-void	ft_write_s (t_printdata *pd)
+/* Write a string. */
+void	ft_write_s(t_printdata *pd)
 {
 	char	*s;
 

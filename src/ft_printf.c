@@ -26,16 +26,17 @@ t_printdata	*t_data_initializer(va_list args, t_printdata *pd)
 	pd->sign = 0;
 	pd->apost = 0;
 	pd->point = 0;
-	return(pd);
-};
+	return (pd);
+}
 
 // Print stuff on screen unga unga, but WHY is print(F) and not print
-int	ft_printf (const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	t_printdata	*pd;
 	va_list		ap;
-	int i = 0;
+	int			i;
 
+	i = 0;
 	if (!fmt)
 		return (-1);
 	va_start(ap, fmt);

@@ -12,6 +12,7 @@
 
 #include "../include/libftprintf.h"
 
+/* Percent format output. */
 void	ft_write_per (t_printdata *pd)
 {
 	char	*per;

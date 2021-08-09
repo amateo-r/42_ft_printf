@@ -23,10 +23,26 @@ static int	ft_isodd(const char *str)
 	return (i);
 }
 
+static int	ch_size(const char *str, int sign, int i)
+{
+	int	count;
+
+	count = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		i++;
+		count++;
+	}
+	if (ft_strlen(str) > 18 && sign == -1 && count > 18)
+		return (0);
+	else if (ft_strlen(str) > 18 && count > 18)
+		return (-1);
+	return (1);
+}
+
 int	ft_atoi(const char *str)
 {
 	int			i;
-	int			count;
 	int			sign;
 	long int	nb;
 
@@ -39,15 +55,14 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
-	count = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + (str[i] - '0');
-		i++, count++;
+		i++;
 	}
-	if (ft_strlen(str) > 18 && sign == -1 && count > 18)
+	if (ch_size(str, sign, i) == 0)
 		return (0);
-	else if (ft_strlen(str) > 18 && count > 18)
+	else if (ch_size(str, sign, i) == -1)
 		return (-1);
 	return ((int)nb * sign);
 }

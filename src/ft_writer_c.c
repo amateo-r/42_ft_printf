@@ -12,7 +12,7 @@
 
 #include "../include/libftprintf.h"
 
-void	ft_write_c (t_printdata *pd)
+void	ft_write_c(t_printdata *pd)
 {
 	char	c;
 	char	*s;
