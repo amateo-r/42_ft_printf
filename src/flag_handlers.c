@@ -15,7 +15,7 @@
 	each flag of printf individually.
 */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 /* Handler for flag "0". */
 int	fh_zero(t_printdata *pd, const char *fmt, int index)

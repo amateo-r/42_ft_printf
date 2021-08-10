@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 /* Impression for flag zero */
 void	ft_ws_zero(char *s, t_printdata *pd)

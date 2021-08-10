@@ -37,7 +37,8 @@ SRC			=	ft_strlen.c \
 				ft_digits.c \
 				ft_digits_base.c \
 				ft_itoa_base.c \
-				ft_uitoa.c
+				ft_uitoa.c \
+				ft_putnbr_base.c
 
 SRC_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 

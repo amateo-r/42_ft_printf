@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 /* Percent format output. */
 void	ft_write_per (t_printdata *pd)
 {
-	char	*per;
+	char	per;
 
-	per = va_arg(pd->args, char *);
+	per = va_arg(pd->args, int);
 	if (pd->zero > 0)
-		ft_ws_zero("%", pd);
+	 	ft_ws_zero("%", pd);
 	else if (pd->space)
 		ft_ws_space("%", pd);
 	else
 	{
-		ft_putstr_fd("%", 1);
+		ft_putchar_fd('%', 1);
 		pd->ret++;
 	}
 	return ;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 /*
 	A veces puede haber un número entre el formato y las flags.
@@ -19,7 +19,7 @@
 int	ch_format(char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' \
-		|| c == 'x' || c == '%')
+		|| c == 'x' || c == 'X' || c == '%')
 		return (1);
 	else
 		return (0);

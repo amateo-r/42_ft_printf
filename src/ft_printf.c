@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 // This function set prederminated values for a printf return.
 t_printdata	*t_data_initializer(va_list args, t_printdata *pd)

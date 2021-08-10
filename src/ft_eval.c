@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 /* Evaluate the characteristics of the allowed formats (cspdiuxX%). */
 t_printdata	*ft_eval_format(const char *fmt, int index, t_printdata *pd)
@@ -26,7 +26,7 @@ t_printdata	*ft_eval_format(const char *fmt, int index, t_printdata *pd)
 	else if (fmt[index] == 'u')
 		return (pd);
 	else if (fmt[index] == 'x' || fmt[index] == 'X')
-		return (pd);
+		ft_write_x(pd, fmt[index] - 23);
 	else if (fmt[index] == '%')
 		ft_write_per(pd);
 	return (pd);
@@ -45,6 +45,13 @@ t_printdata	*ft_reset_pd(t_printdata *pd)
 	pd->apost = 0;
 	pd->point = 0;
 	return (pd);
+}
+
+void	ft_print_tpd (t_printdata *pd)
+{
+	printf("[pre{%d}, pad{%d}, zero{%d}, minus{%d}, space{%d}, sign{%d}, apost{%d}, point{%d}]", pd->pre, pd->pad, pd->zero, \
+	pd->minus, pd->space, pd->sign, pd->apost, pd->point);
+	return ;
 }
 
 /*	Evaluate the type of formats when '%' is detected. */

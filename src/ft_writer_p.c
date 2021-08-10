@@ -10,13 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
-
-/* Técnicamente esto es para cuando un p es nulo. */
-void	ft_null_pointer (void)
-{
-	return ;
-}
+#include "../include/ft_printf.h"
 
 // Esencialmente un puntero es en formato %#x %llx %lx
 // Exist esta opción: uintptr_t. Como es un tipo de dato, técnicmante
@@ -24,20 +18,23 @@ void	ft_null_pointer (void)
 /* Pointer format output. */
 void	ft_write_p(t_printdata *pd)
 {
-	void	*p;
-	char	*str;
-	int		len;
-	int		i;
+	unsigned long	point;
+	int				len;
 
-	p = va_arg(pd->args, void *);
-	i = -1;
-	if (!p)
+	len = 2;
+	point = (unsigned long)va_arg(pd->args, void *);
+	if ((!point && pd->pre > 0) || point == 0)
+	{
+		pd->ret += write(1, "0x0", 3);
 		return ;
-	len = ft_digits_base((unsigned long)p, 16);
-	str = (char *)malloc(sizeof(char) * len);
-	str = (char *)p;
-	ft_putstr_fd("0x", 1);
-	while (++i < len)
-		ft_putchar_fd(str[i], 1);
-	return ;
+	}
+	if (!(!point))
+		len += ft_digits_base(point, 16);
+	else
+		pd->pre = pd->pre + 2 - len;
+	pd->ret += write(1, "0x", 2);
+	while (pd->pre-- > 0)
+		pd->ret += write(1, "0", 1);
+	if (!(!point))
+		pd->ret += ft_putnbr_base(point, "0123456789abcdef");
 }

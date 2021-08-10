@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writer_c.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 17:59:32 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/03 17:59:33 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/08/10 13:30:23 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/08/10 13:30:25 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-void	ft_write_c(t_printdata *pd)
+int	ft_putnbr_base(unsigned long n, char *base)
 {
-	char	c;
-	char	*s;
+	unsigned long	len;
+	unsigned long	num;
+	int				l;
 
-	c = va_arg(pd->args, int);
-	if (!c)
+	l = 1;
+	num = n;
+	len = ft_strlen(base);
+	if (num == 0)
 	{
-		pd->ret++;
-		return ;
+		ft_putchar_fd('0', 1);
+		return (l);
 	}
-	s = malloc (sizeof(char));
-	*s = c;
-	if (pd->zero > 0)
-		ft_ws_zero(s, pd);
-	else if (pd->space)
-		ft_ws_space(s, pd);
-	else if (pd->point)
-		ft_ws_point(s, pd);
-	else
+	if (num >= len)
 	{
-		ft_putchar_fd(c, 1);
-		pd->ret++;
+		l += ft_putnbr_base(num / len, base);
+		ft_putchar_fd(base[num % len], 1);
 	}
-	free (s);
-	return ;
+	else if (num < len)
+		ft_putchar_fd(base[num], 1);
+	return (l);
 }

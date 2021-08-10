@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <unistd.h>
 # include <stdio.h>
@@ -62,8 +62,9 @@ void		ft_ws_space(char *s, t_printdata *pd);
 void		ft_ws_point(char *s, t_printdata *pd);
 void		ft_write_c(t_printdata *pd);
 void		ft_write_s(t_printdata *pd);
-void		ft_write_d(t_printdata *pd);
 void		ft_write_p(t_printdata *pd);
+void		ft_write_d(t_printdata *pd);
+void		ft_write_x(t_printdata *pd, int c);
 void		ft_write_per(t_printdata *pd);
 
 #endif
