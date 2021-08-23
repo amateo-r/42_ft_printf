@@ -7,7 +7,8 @@ SRC			=	./src/ft_printf.c \
 				./src/ft_writer_c.c \
 				./src/ft_writer_per.c \
 				./src/ft_writer_p.c \
-				./src/ft_writer_x.c
+				./src/ft_writer_x.c \
+				./src/ft_writer_u.c
 
 SRC_BONUS	=	
 

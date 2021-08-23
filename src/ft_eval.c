@@ -15,6 +15,7 @@
 /* Evaluate the characteristics of the allowed formats (cspdiuxX%). */
 t_printdata	*ft_eval_format(const char *fmt, int index, t_printdata *pd)
 {
+	//printf ("fmt index: [%c, %d]\n", fmt[index], index);
 	if (fmt[index] == 'c')
 		ft_write_c(pd);
 	else if (fmt[index] == 's')
@@ -24,7 +25,7 @@ t_printdata	*ft_eval_format(const char *fmt, int index, t_printdata *pd)
 	else if (fmt[index] == 'd' || fmt[index] == 'i')
 		ft_write_d(pd);
 	else if (fmt[index] == 'u')
-		return (pd);
+		ft_write_u(pd);
 	else if (fmt[index] == 'x' || fmt[index] == 'X')
 		ft_write_x(pd, fmt[index] - 23);
 	else if (fmt[index] == '%')
@@ -64,20 +65,20 @@ int	ft_eval_flag(const char *fmt, int index, t_printdata *pd)
 	ft_reset_pd(pd);
 	while (ch_format(fmt[index]) == 0)
 	{
-		if (fmt[index] == '#')
-			pd->pad++;
-		else if (fmt[index] == '0' && pd->zero == 0)
-			fh_zero(pd, fmt, index_start + 1);
-		else if (fmt[index] == '-')
-			fh_minus(pd, fmt, index_start);
-		else if (fmt[index] == ' ')
-			fh_space(pd, fmt, index_start);
-		else if (fmt[index] == '+')
-			pd->sign++;
-		else if (fmt[index] == '\'')
-			pd->apost++;
-		else if (fmt[index] == '.')
-			fh_point(pd, fmt, index_start);
+		// if (fmt[index] == '#')
+		// 	pd->pad++;
+		// else if (fmt[index] == '0' && pd->zero == 0)
+		// 	fh_zero(pd, fmt, index_start + 1);
+		// else if (fmt[index] == '-')
+		// 	fh_minus(pd, fmt, index_start);
+		// else if (fmt[index] == ' ')
+		// 	fh_space(pd, fmt, index_start);
+		// else if (fmt[index] == '+')
+		// 	pd->sign++;
+		// else if (fmt[index] == '\'')
+		// 	pd->apost++;
+		// else if (fmt[index] == '.')
+		// 	fh_point(pd, fmt, index_start);
 		index++;
 	}
 	ft_eval_format(fmt, index, pd);

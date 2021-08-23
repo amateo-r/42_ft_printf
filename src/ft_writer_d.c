@@ -12,11 +12,16 @@
 
 #include "../include/ft_printf.h"
 
-void	ft_stupid_sign(int sign)
+int	ft_stupid_sign(t_printdata *pd, int sign, int d)
 {
-	if (sign)
+	if (sign == 1)
+	{
+		pd->pre -= 1;
+		d *= -1;
 		ft_putchar_fd('-', 1);
-	return ;
+		pd->ret++;
+	}
+	return (d);
 }
 
 void	ft_write_d(t_printdata *pd)
@@ -27,37 +32,31 @@ void	ft_write_d(t_printdata *pd)
 
 	d = va_arg(pd->args, int);
 	sign = 0;
-	if (!d)
+	if (!d && d != 0)
 		return ;
 	if (d < 0)
-	{
-		pd->pre -= 1;
-		d *= -1;
 		sign = 1;
-	}
 	s = ft_itoa(d);
 	if (pd->zero > 0)
 	{
-		ft_stupid_sign(sign);
+		d = ft_stupid_sign(pd, sign, d);
 		ft_ws_zero (s, pd);
 	}
 	else if (pd->space)
 	{
-		ft_stupid_sign(sign);
+		d = ft_stupid_sign(pd, sign, d);
 		ft_ws_space(s, pd);
 	}
 	else if (pd->point)
 	{
-		ft_stupid_sign(sign);
+		d = ft_stupid_sign(pd, sign, d);
 		ft_ws_point(s, pd);
 	}
 	else
 	{
-		ft_stupid_sign(sign);
 		ft_putstr_fd(s, 1);
 		pd->ret += ft_strlen(s);
 	}
-	if (sign)
-		pd->ret++;
+	free(s);
 	return ;
 }

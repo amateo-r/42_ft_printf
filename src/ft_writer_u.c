@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_writer_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 13:04:30 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/09 13:07:49 by amateo-r         ###   ########.fr       */
+/*   Created: 2021/08/23 13:57:47 by amateo-r          #+#    #+#             */
+/*   Updated: 2021/08/23 13:57:49 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/ft_printf.h"
 
-/* ft_itoa function for unsigned int number. */
-char	*ft_uitoa(unsigned int nb)
+void	ft_write_u(t_printdata *pd)
 {
-	char	*str;
-	int		len;
+	unsigned int	u;
+	char			*s;
 
-	len = ft_digits_base(nb, 10);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	str[len--] = '\0';
-	if (nb == 0)
-		str[len] = 0 + '0';
-	while (nb > 0)
-	{
-		str[len--] = nb % 10 + '0';
-		nb /= 10;
-	}
-	return (str);
+	u = va_arg(pd->args, unsigned int);
+	// printf ("Qué pasó: [%u]", u);
+	if (!u && u != 0)
+		return ;
+	s = ft_uitoa(u);
+	ft_putstr_fd(s, 1);
+	pd->ret += ft_strlen(s);
+	free(s);
+	return ;
 }

@@ -12,6 +12,7 @@
 
 #include "../include/ft_printf.h"
 
+// Errores en 5, 8, 9
 void	ft_write_c(t_printdata *pd)
 {
 	char	c;
