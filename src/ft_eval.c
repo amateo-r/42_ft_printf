@@ -29,7 +29,7 @@ t_printdata	*ft_eval_format(const char *fmt, int index, t_printdata *pd)
 	else if (fmt[index] == 'x' || fmt[index] == 'X')
 		ft_write_x(pd, fmt[index] - 23);
 	else if (fmt[index] == '%')
-		ft_write_per(pd);
+		ft_write_per(pd); // No hace falta una función. Puedes poner pd->ret = write(1, "%", 1);
 	return (pd);
 }
 
