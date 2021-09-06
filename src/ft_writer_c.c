@@ -19,7 +19,7 @@ void	ft_write_c(t_printdata *pd)
 	char	*s;
 
 	c = va_arg(pd->args, int);
-	if (!c)
+	if (!c) // Es posible que esto sea lo que esté mal.
 	{
 		pd->ret++;
 		return ;
