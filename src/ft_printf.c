@@ -41,7 +41,7 @@ int	ft_printf(const char *fmt, ...)
 		return (-1);
 	va_start(ap, fmt);
 	pd = (t_printdata *)malloc (sizeof(t_printdata));
-	t_data_initializer(ap, pd);
+	t_data_initializer(ap, pd); // Después de este, va_start(pd->args, format); Habría que eliminar va_copy, y el 1º va_start, va_end.
 	va_end(ap);
 	i = -1;
 	while (fmt[++i] != '\0')
