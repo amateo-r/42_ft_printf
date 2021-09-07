@@ -6,16 +6,15 @@
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:01:15 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/06/28 19:46:11 by amateo-r         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:56:55 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
 // This function set prederminated values for a printf return.
-t_printdata	*t_data_initializer(va_list args, t_printdata *pd)
+t_printdata	*t_data_initializer(t_printdata *pd)
 {
-	va_copy(pd->args, args);
 	pd->width = 0;
 	pd->pre = 0;
 	pd->ret = 0;
@@ -33,16 +32,14 @@ t_printdata	*t_data_initializer(va_list args, t_printdata *pd)
 int	ft_printf(const char *fmt, ...)
 {
 	t_printdata	*pd;
-	va_list		ap;
 	int			i;
 
 	i = 0;
 	if (!fmt)
 		return (-1);
-	va_start(ap, fmt);
 	pd = (t_printdata *)malloc (sizeof(t_printdata));
-	t_data_initializer(ap, pd); // Después de este, va_start(pd->args, format); Habría que eliminar va_copy, y el 1º va_start, va_end.
-	va_end(ap);
+	t_data_initializer(pd);
+	va_start(pd->args, fmt);
 	i = -1;
 	while (fmt[++i] != '\0')
 	{

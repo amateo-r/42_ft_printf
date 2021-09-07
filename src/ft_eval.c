@@ -6,7 +6,7 @@
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 18:00:32 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/05 14:24:08 by amateo-r         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:54:22 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /* Evaluate the characteristics of the allowed formats (cspdiuxX%). */
 t_printdata	*ft_eval_format(const char *fmt, int index, t_printdata *pd)
 {
-	//printf ("fmt index: [%c, %d]\n", fmt[index], index);
 	if (fmt[index] == 'c')
 		ft_write_c(pd);
 	else if (fmt[index] == 's')
@@ -29,7 +28,7 @@ t_printdata	*ft_eval_format(const char *fmt, int index, t_printdata *pd)
 	else if (fmt[index] == 'x' || fmt[index] == 'X')
 		ft_write_x(pd, fmt[index] - 23);
 	else if (fmt[index] == '%')
-		ft_write_per(pd); // No hace falta una función. Puedes poner pd->ret = write(1, "%", 1);
+		pd->ret += write(1, "%", 1);
 	return (pd);
 }
 
@@ -48,15 +47,7 @@ t_printdata	*ft_reset_pd(t_printdata *pd)
 	return (pd);
 }
 
-void	ft_print_tpd (t_printdata *pd)
-{
-	printf("[pre{%d}, pad{%d}, zero{%d}, minus{%d}, space{%d}, sign{%d}, apost{%d}, point{%d}]", pd->pre, pd->pad, pd->zero, \
-	pd->minus, pd->space, pd->sign, pd->apost, pd->point);
-	return ;
-}
-
 /*	Evaluate the type of formats when '%' is detected. */
-/* 	SIN EJECUTAR EL BUCLE FUNCIONA CASI TODO. */
 int	ft_eval_flag(const char *fmt, int index, t_printdata *pd)
 {
 	int	index_start;
@@ -64,23 +55,7 @@ int	ft_eval_flag(const char *fmt, int index, t_printdata *pd)
 	index_start = index;
 	ft_reset_pd(pd);
 	while (ch_format(fmt[index]) == 0)
-	{
-		// if (fmt[index] == '#')
-		// 	pd->pad++;
-		// else if (fmt[index] == '0' && pd->zero == 0)
-		// 	fh_zero(pd, fmt, index_start + 1);
-		// else if (fmt[index] == '-')
-		// 	fh_minus(pd, fmt, index_start);
-		// else if (fmt[index] == ' ')
-		// 	fh_space(pd, fmt, index_start);
-		// else if (fmt[index] == '+')
-		// 	pd->sign++;
-		// else if (fmt[index] == '\'')
-		// 	pd->apost++;
-		// else if (fmt[index] == '.')
-		// 	fh_point(pd, fmt, index_start);
 		index++;
-	}
 	ft_eval_format(fmt, index, pd);
 	return (index);
 }

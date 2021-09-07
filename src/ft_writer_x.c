@@ -6,7 +6,7 @@
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 12:31:27 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/10 12:31:32 by amateo-r         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:04:52 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_write_pad(t_printdata *pd)
 	return ;
 }
 
-void	ft_write_x(t_printdata  *pd, int c)
+void	ft_write_x(t_printdata *pd, int c)
 {
 	unsigned int	n;
 	int				len;

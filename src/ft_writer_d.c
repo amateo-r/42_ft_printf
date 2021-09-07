@@ -6,7 +6,7 @@
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 13:23:58 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/03 13:24:00 by amateo-r         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:58:54 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,8 @@ void	ft_write_d(t_printdata *pd)
 	if (d < 0)
 		sign = 1;
 	s = ft_itoa(d);
-	if (pd->zero > 0)
-	{
-		d = ft_stupid_sign(pd, sign, d);
-		ft_ws_zero (s, pd);
-	}
-	else if (pd->space)
-	{
-		d = ft_stupid_sign(pd, sign, d);
-		ft_ws_space(s, pd);
-	}
-	else if (pd->point)
-	{
-		d = ft_stupid_sign(pd, sign, d);
-		ft_ws_point(s, pd);
-	}
-	else
-	{
-		ft_putstr_fd(s, 1);
-		pd->ret += ft_strlen(s);
-	}
+	ft_putstr_fd(s, 1);
+	pd->ret += ft_strlen(s);
 	free(s);
 	return ;
 }

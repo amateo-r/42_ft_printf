@@ -6,7 +6,7 @@
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 13:57:47 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/23 13:57:49 by amateo-r         ###   ########.fr       */
+/*   Updated: 2021/09/07 13:01:17 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_write_u(t_printdata *pd)
 	char			*s;
 
 	u = va_arg(pd->args, unsigned int);
-	// printf ("Qué pasó: [%u]", u);
 	if (!u && u != 0)
 		return ;
 	s = ft_uitoa(u);

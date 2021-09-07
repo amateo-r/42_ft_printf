@@ -68,10 +68,7 @@ void	ft_ws_point(char *s, t_printdata *pd)
 	if (pd->pre > 0)
 	{
 		if (pd->pre > len && !pd->minus)
-		{
-			pd->ret += len;
-			ft_putstr_fd(s, 1);
-		}
+			pd->ret += write(1, s, len);
 		else
 		{
 			while (++i < pd->pre)
@@ -80,8 +77,7 @@ void	ft_ws_point(char *s, t_printdata *pd)
 					c = ' ';
 				else
 					c = s[i];
-				ft_putchar_fd(c, 1);
-				pd->ret++;
+				pd->ret += write (1, &c, 1);
 			}
 		}
 	}
@@ -95,12 +91,15 @@ void	ft_write_s(t_printdata *pd)
 
 	s = va_arg(pd->args, char *);
 	if (!s)
+	{
+		pd->ret += write(1, "(null)", 6);
 		return ;
-	if (pd->zero)
+	}
+	if (pd->zero > 0)
 		ft_ws_zero(s, pd);
-	else if (pd->space)
+	else if (pd->space > 0)
 		ft_ws_space(s, pd);
-	else if (pd->point)
+	else if (pd->point > 0)
 		ft_ws_point(s, pd);
 	else
 	{

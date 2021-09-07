@@ -6,7 +6,7 @@
 /*   By: amateo-r <amateo-r@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 17:59:32 by amateo-r          #+#    #+#             */
-/*   Updated: 2021/08/03 17:59:33 by amateo-r         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:57:45 by amateo-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ void	ft_write_c(t_printdata *pd)
 	char	*s;
 
 	c = va_arg(pd->args, int);
-	if (!c) // Es posible que esto sea lo que esté mal.
-	{
-		pd->ret++;
-		return ;
-	}
 	s = malloc (sizeof(char));
 	*s = c;
 	if (pd->zero > 0)
