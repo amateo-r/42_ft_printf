@@ -12,12 +12,11 @@ SRC			=	./src/ft_printf.c \
 
 SRC_BONUS	=	
 
-OBJ			=	${SRC:.c=.o}
-OBJ_BONUS	=	${SRC_BONUS:.c=.o}
+OBJ			=	$(SRC:.c=.o)
+OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
 
-LIBFT		=	libft.a
-LIBFT_PATH	=	./libft/
-LIBFT_OBJS	=	${LIBFT_PATH}*.o
+LIBFT		=	$(LIBFT_PATH)/libft.a
+LIBFT_PATH	=	./libft
 
 NAME		=	libftprintf.a
 
@@ -29,19 +28,19 @@ RM			=	rm -f
 
 CFLAGS		=	-Wall -Wextra -Werror
 
-.c.o:
-			${CC} ${CFLAGS} $<	-o ${<:.c=.o}
+%.o%.c: $(LIBFT)
+			$(CC) $(CFLAGS) $<	-o $@
 
-all:		${NAME}
+all:		makelib $(NAME)
 
 bonus:		
 
-${NAME}:	${OBJ} makelib
-			${AR} ${NAME} ${OBJ} ${LIBFT_OBJS}
-			ranlib ${NAME}
+$(NAME):	$(OBJ)
+			cp $(LIBFT) $(NAME)
+			ar rc $(NAME) $(OBJ)
 
 makelib:		
-			@make -C ${LIBFT_PATH}
+			@make -C $(LIBFT_PATH)
 
 norme:
 			@echo "---- INCLUDE ----"
@@ -52,10 +51,12 @@ norme:
 			norminette ./libft
 
 clean:
-			make -C ${LIBFT_PATH} clean
-			${RM} ${OBJ} ${OBJ_BONUS}
+			@make -C $(LIBFT_PATH) clean
+			$(RM) $(OBJ)
 
 fclean:		clean
-			${RM} ${NAME} ${LIBFT_PATH}${LIBFT}
+			$(RM) $(NAME) $(LIBFT)
 
 re:			fclean all
+
+.PHONY:		all re m clean
